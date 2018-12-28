@@ -1,15 +1,29 @@
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import com.mgh3326.app.Alsong;
+import com.mgh3326.app.Mnet;
+import com.mgh3326.app.Music;
 
-import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        // Window, Chrome의 User Agent.
-        String userAgent = " 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36";
-        Document doc = Jsoup.connect("http://www.ppomppu.co.kr/zboard/zboard.php?id=ppomppu").userAgent(userAgent).get();
-        System.out.println(doc.title());
 
+
+    public static void main(String[] args) throws Exception {
+
+
+// Do what you want with that stream
+        Mnet mnet = new Mnet();//객체 호출
+        Music music;
+        music = mnet.search("아기상어");
+        if (music.getmResultCode() == 0) {
+            System.out.println(music.getmTitle());
+            System.out.println(music.getmImagePath());
+
+            Alsong alsong = new Alsong();//객체 호출
+        } else {
+            System.out.println("검색 결과가 없습니다.");
+        }
 
     }
 }
