@@ -1,4 +1,4 @@
-package com.mgh3326.app;
+package com.mgh3326.music_parse;
 
 public class Music {
     public String getmTitle() {

@@ -1,13 +1,31 @@
-import com.mgh3326.app.Alsong;
-import com.mgh3326.app.Mnet;
-import com.mgh3326.app.Music;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.mgh3326.music_parse.Music;
+import com.mgh3326.music_parse.alsong.Alsong;
+import com.mgh3326.music_parse.lyrics.LyricsData;
+import com.mgh3326.music_parse.lyrics.LyricsParser;
+import com.mgh3326.music_parse.mnet.Mnet;
 
 
 public class Main {
 
+    public static void test(String title, String artist) {
+
+        /* work start */
+        if (title.length() > 0) {
+            LyricsParser lp = new LyricsParser();
+            lp.SearchAlsongServer(title, artist);
+            LyricsData arrLyrics = new LyricsData();
+            if (lp.parseLyricsResult(arrLyrics)) {
+//성공 했을때
+                System.out.println("성공");
+
+            } else {
+                System.out.println("실패");
+                //실패
+            }
+        }
+        /* work end */
+
+    }
 
     public static void main(String[] args) throws Exception {
 
@@ -15,15 +33,15 @@ public class Main {
 // Do what you want with that stream
         Mnet mnet = new Mnet();//객체 호출
         Music music;
-        music = mnet.search("아기상어");
+        music = mnet.search("성시경 좋을텐데");
         if (music.getmResultCode() == 0) {
             System.out.println(music.getmTitle());
             System.out.println(music.getmImagePath());
-
-            Alsong alsong = new Alsong();//객체 호출
+            test(music.getmTitle(), music.getmArtist());
         } else {
             System.out.println("검색 결과가 없습니다.");
         }
+        Alsong alsong = new Alsong(music);//객체 호출
 
     }
 }
