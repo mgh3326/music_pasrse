@@ -17,7 +17,11 @@ public class Main {
             if (lp.parseLyricsResult(arrLyrics)) {
 //성공 했을때
                 System.out.println("성공");
-
+                for (int i = 0; i < arrLyrics.arrLyrics.size(); i++) {
+                    System.out.print(arrLyrics.arrLyrics.get(i).time + " : ");
+                    System.out.println(arrLyrics.arrLyrics.get(i).lyrics);
+                }
+                System.out.println();
             } else {
                 System.out.println("실패");
                 //실패
@@ -33,7 +37,7 @@ public class Main {
 // Do what you want with that stream
         Mnet mnet = new Mnet();//객체 호출
         Music music;
-        music = mnet.search("성시경 좋을텐데");
+        music = mnet.search("러블리즈");
         if (music.getmResultCode() == 0) {
             System.out.println(music.getmTitle());
             System.out.println(music.getmImagePath());

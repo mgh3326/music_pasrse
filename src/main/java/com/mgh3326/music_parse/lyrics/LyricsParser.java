@@ -157,13 +157,13 @@ public class LyricsParser {
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
             Document document = builder.parse(new InputSource(new StringReader(lrcData)));
 
-            NodeList nStatus = document.getElementsByTagName("strStatusID");//여기부터 좀 바뀐거 같다.
-            if (!nStatus.item(0).getTextContent().equals("1"))
+            NodeList nStatus = document.getElementsByTagName("strOnlyLyricWord");//여기부터 좀 바뀐거 같다.
+            if (!nStatus.item(0).getTextContent().equals("0"))
                 return false;
 
             NodeList nTitle = document.getElementsByTagName("strTitle");
-            NodeList nArtist = document.getElementsByTagName("strArtist");
-            NodeList nAlbum = document.getElementsByTagName("strAlbum");
+            NodeList nArtist = document.getElementsByTagName("strArtistName");
+            NodeList nAlbum = document.getElementsByTagName("strAlbumName");
             NodeList nLyrics = document.getElementsByTagName("strLyric");
             NodeList nCreator = document.getElementsByTagName("strRegisterFirstName");
             NodeList nLRCCreator = document.getElementsByTagName("strRegisterName");

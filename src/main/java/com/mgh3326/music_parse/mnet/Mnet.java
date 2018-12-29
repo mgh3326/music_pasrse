@@ -114,8 +114,8 @@ public class Mnet {
                 String album_id = element.getAsJsonObject().get("data").getAsJsonObject().get("songlist").getAsJsonArray().get(0).getAsJsonObject().get("albumid").getAsString();
                 this.music.setmImagePath(this.SearchImagePath(album_id));
 
-                if (element.getAsJsonObject().get("data").getAsJsonObject().get("songlist").getAsJsonArray().get(0).getAsJsonObject().get("songnm").getAsString().length() != 0) {
-                    this.music.setmLyric(element.getAsJsonObject().get("data").getAsJsonObject().get("songlist").getAsJsonArray().get(0).getAsJsonObject().get("songnm").getAsString());
+                if (element.getAsJsonObject().get("data").getAsJsonObject().get("lyriclist").getAsJsonArray().get(0).getAsJsonObject().size() != 0) {
+                    this.music.setmLyric(element.getAsJsonObject().get("data").getAsJsonObject().get("lyriclist").getAsJsonArray().get(0).getAsJsonObject().get("lyrics").getAsString());
 
                 }
 
